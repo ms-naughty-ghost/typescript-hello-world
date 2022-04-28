@@ -2,6 +2,15 @@
 1. npm init to create package.json
 2. npm install --save-dev typescript
 3. npx tsc --init to create tsconfig.json
+# webpack導入
+https://webpack.js.org/
+```
+npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader
+```
+- tsconfig.json
+  - targetが`ES6`になっていることを確認
+  - moduleが`ES2015`になっていることを確認
+- webpack.config.js
 # Linter導入
 - ESLint install
 ```
