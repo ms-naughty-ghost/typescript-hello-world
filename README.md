@@ -5,7 +5,7 @@
 # webpack導入
 https://webpack.js.org/
 ```
-npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader
+npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-plugin
 ```
 - tsconfig.json
   - targetが`ES6`になっていることを確認
