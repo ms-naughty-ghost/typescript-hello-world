@@ -1,0 +1,7 @@
+{
+  "watch": ["build"],
+  "ext": "js",
+  "ignore": ["src/**/*.test.ts"],
+  "delay": "1000",
+  "exec": "node build/app.js"
+}

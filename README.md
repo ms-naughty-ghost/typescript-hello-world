@@ -1,54 +1,54 @@
 # Create Project
-1. npm init to create package.json
-2. npm install --save-dev typescript
-3. npx tsc --init to create tsconfig.json
-# webpack導入
-https://webpack.js.org/
+1. 最新のyarnをインストールします。
 ```
-npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-plugin
+npm install -g yarn
 ```
-- tsconfig.json
-  - targetが`ES6`になっていることを確認
-  - moduleが`ES2015`になっていることを確認
-- webpack.config.js
+2. プロジェクトリポジトリに移動します。
+3. create package.json
+```
+yarn init
+```
+1. パッケージの追加。
+```
+yarn add --dev typescript ts-node @types/node
+```
+1. create tsconfig.json
+```
+yarn tsc --init
+```
+
 # Linter導入
 - ESLint install
 ```
-npm install --save-dev eslint
+yarn add --dev eslint
 ```
-- `npx eslint --init`コマンドで対話式で構成ファイル作成
+- `yarn eslint --init`コマンドで対話式で構成ファイル作成
 1. How would you like to use ESLint?  
-`To check syntax, find problems, and enforce code style`
-2. What type of modules does your project use?  
+`To check syntax and find problems`
+1. What type of modules does your project use?  
 `JavaScript modules (import/export)`
-3. Which framework does your project use?  
-開発に合わせて選ぶ
-```
-React
-Vue.js
-None of these
-```
-4. Does your project use TypeScript?  
+1. Which framework does your project use?  
+`None of these`
+1. Does your project use TypeScript?  
 `Yes`
-5. Where does your code run?  
-開発に合わせて選ぶ
+1. Where does your code run?
 ```
-√ Browser
+  Browser
 √ Node
 ```
 6. How would you like to define a style for your project?  
-`Use a popular style guide`
-7. Which style guide do you want to follow?  
+`To check syntax, find problems, and enforce code style`
+1. Which style guide do you want to follow?  
 `Airbnb: https://github.com/airbnb/javascript`
-8. What format do you want your config file to be in?  
-`Javascript`
-9. Would you like to install them now with npm?  
+1. What format do you want your config file to be in?  
+`JSON`
+1. Would you like to install them now with npm?  
 `Yes`
-- .eslint.jsが生成されます
+- eslintの設定ファイルが生成されます
 # Prettier 導入&実行
 - Prettier install
 ```
-npm install --save-dev prettier eslint-config-prettier
+yarn add --dev prettier eslint-config-prettier
 ```
 - .eslint.jsにPrettierの項目を追加する
 ```
@@ -61,28 +61,47 @@ module.exports = {
 };
 ```
 - Prettier 設定ファイル作成
-フォーマット設定はここに記述
+[フォーマット設定](https://prettier.io/docs/en/options.html)はここに記述
 ```
 echo "{}"> .prettierrc.json
 ```
 - prettierの対象外になるファイルを設定する`.prettierignore`を作成
 ```
 touch .prettierignore
+```
+ファイル記述例
+```
 # Ignore artifacts:
-/dist
 node_modules
 package.json
-package-lock.json
+yarn.lock
 tsconfig.json
-tsconfig.eslint.json
+.eslintrc.json
 ```
 
 # package.json
 scriptに実行コマンドをまとめる
 ```
-    "eslint": "eslint src/**/*.ts",
-    "eslint:fix": "eslint src/**/*.ts --fix",
-    "format": "prettier --write src/**/*.{js,ts,json}",
-    "lint": "npm-run-all eslint check-types",
-    "lint:fix": "npm-run-all eslint:fix check-types format"
+"format": "prettier --write src/**/*.{js,ts,json}",
+"lint": "eslint src/**/*.ts",
+"lint:fix": "yarn run format && yarn run lint"
 ```
+
+# hot reload
+`tsc --watch`と`nodemon`を組み合わせる
+- `nodemon.json`ファイルを作成し、下記の設定を追記する
+```
+{
+  "watch": ["build"],
+  "ext": "js",
+  "ignore": [""],
+  "delay": "1000",
+  "exec": "node build/app.js"
+}
+```
+- package,jsonにコマンドを追加する
+```
+"build": "tsc --watch",
+"watch": "nodemon",
+```
+- buildとwatchを両方実行する

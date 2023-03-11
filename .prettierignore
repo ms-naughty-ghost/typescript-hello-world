@@ -1,8 +1,7 @@
 # Ignore artifacts:
-/dist
 node_modules
+build
+yarn.lock
 package.json
-package-lock.json
 tsconfig.json
-tsconfig.eslint.json
-.prettierrc.json
+.eslintrc.json
