@@ -48,7 +48,7 @@ yarn add --dev eslint
 # Prettier 導入&実行
 - Prettier install
 ```
-yarn add --dev prettier eslint-config-prettier
+yarn add --dev prettier eslint-config-prettier prettier-plugin-organize-imports
 ```
 - .eslint.jsにPrettierの項目を追加する
 ```
@@ -63,8 +63,22 @@ module.exports = {
 - Prettier 設定ファイル作成
 [フォーマット設定](https://prettier.io/docs/en/options.html)はここに記述
 ```
-echo "{}"> .prettierrc.json
+touch .prettierrc.json
 ```
+- `.prettierrc.json`に下記を追記
+```
+{
+  "trailingComma": "es5",
+  "printWidth": 120,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "semi": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-organize-imports"]
+}
+``
 - prettierの対象外になるファイルを設定する`.prettierignore`を作成
 ```
 touch .prettierignore

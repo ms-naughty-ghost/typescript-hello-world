@@ -1,9 +1,11 @@
 {
   "trailingComma": "es5",
-  "printWidth": 80,
+  "printWidth": 120,
   "singleQuote": true,
   "tabWidth": 2,
   "semi": true,
   "bracketSpacing": true,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-organize-imports"]
 }
