@@ -78,7 +78,7 @@ touch .prettierrc.json
   "endOfLine": "lf",
   "plugins": ["prettier-plugin-organize-imports"]
 }
-``
+```
 - prettierの対象外になるファイルを設定する`.prettierignore`を作成
 ```
 touch .prettierignore
